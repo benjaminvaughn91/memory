@@ -6,5 +6,5 @@ export const getInitialCards = () => {
     cards.push({ id: i, color: COLORS[i] });
     cards.push({ id: i + COLORS.length, color: COLORS[i] });
   }
-  return cards.sort((a, b) => 0.5 - Math.random());
+  return cards.sort(() => 0.5 - Math.random()); // shuffle the array of cards
 };

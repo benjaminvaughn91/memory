@@ -19,7 +19,7 @@ const Card = ({ revealed, card, handleCardClick }: CardProps) => {
       cardColor={color}
       revealed={revealed}
       onClick={() => handleCardClick(card)}
-    ></StyledCard>
+    />
   );
 };
 

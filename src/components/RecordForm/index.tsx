@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Alert,
   Box,
@@ -22,7 +22,7 @@ const RecordForm = ({ score, addRecord }: RecordFormProps) => {
 
   const { loading, error, createRecord } = useCreateRecord();
 
-  const handleNoteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPlayerName(event.target.value);
   };
 
@@ -50,7 +50,7 @@ const RecordForm = ({ score, addRecord }: RecordFormProps) => {
         <Stack direction={"row"} spacing={1}>
           <TextField
             value={playerName}
-            onChange={handleNoteChange}
+            onChange={handleNameChange}
             fullWidth
             variant={"outlined"}
           />

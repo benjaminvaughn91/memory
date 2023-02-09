@@ -20,32 +20,44 @@ const Board = ({ score, setScore, setGameOngoing }: BoardProps) => {
       setSelectedCards([selectedCards[0], card]);
   };
 
+  const updateDeck = () => {
+    setcards(
+      cards.map((card) =>
+        card.color !== selectedCards[0].color
+          ? card
+          : { ...card, color: undefined }
+      )
+    );
+  };
+
+  const updateGameState = () => {
+    const matchedCards = cards.filter(
+      (card) => card.color === undefined
+    ).length;
+    if (matchedCards === getInitialCards().length - 2) {
+      setGameOngoing(false);
+    }
+  };
+
   useEffect(() => {
     if (selectedCards.length === 2) {
       setTimeout(() => {
         if (selectedCards[0].color === selectedCards[1].color) {
           setScore(score + 1);
-          setcards(
-            cards.map((card) =>
-              card.color !== selectedCards[0].color
-                ? card
-                : { id: card.id, color: undefined }
-            )
-          );
-          const wins = cards.filter((card) => card.color === undefined).length;
-          if (wins === getInitialCards().length - 2) setGameOngoing(false);
+          updateDeck();
+          updateGameState();
         } else {
           setScore(score > 0 ? score - 1 : score);
         }
         setSelectedCards([]);
       }, 600);
     }
-  }, [score, selectedCards]);
+  }, [cards, score, selectedCards, setGameOngoing, setScore]);
 
   return (
     <Grid container spacing={1}>
-      {cards.map((card, i) => (
-        <Grid key={i} item>
+      {cards.map((card) => (
+        <Grid key={card.id} item>
           <Card
             card={card}
             revealed={
