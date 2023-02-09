@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyledCard, StyledEmptySpace } from "./styles";
 import { CardType } from "../../types/types";
 
@@ -19,9 +19,7 @@ const Card = ({ revealed, card, handleCardClick }: CardProps) => {
       cardColor={color}
       revealed={revealed}
       onClick={() => handleCardClick(card)}
-    >
-      {color}
-    </StyledCard>
+    ></StyledCard>
   );
 };
 

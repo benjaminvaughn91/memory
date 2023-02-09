@@ -38,7 +38,7 @@ const Board = ({ score, setScore, setGameOngoing }: BoardProps) => {
           setScore(score > 0 ? score - 1 : score);
         }
         setSelectedCards([]);
-      }, 40);
+      }, 600);
     }
   }, [score, selectedCards]);
 
